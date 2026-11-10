@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="description" content="夜の街で迷子になった猫が、音・匂い・足の裏の感覚だけを頼りにおうちへ帰るブラウザゲーム。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ねこの帰り道">
+<meta property="og:description" content="猫が感じ取れるものだけを頼りに、夜の街をおうちまで帰ろう。">
+<meta property="og:url" content="https://nimnim1848.github.io/lost_cat/">
+<meta property="og:image" content="https://nimnim1848.github.io/lost_cat/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ねこの帰り道">
+<meta name="twitter:description" content="猫が感じ取れるものだけを頼りに、夜の街をおうちまで帰ろう。">
+<meta name="twitter:image" content="https://nimnim1848.github.io/lost_cat/og.png">
 <title>ねこの帰り道</title>
 <style>
   html,body{margin:0;height:100%;background:#04060b;color:#dfe6f5;font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
@@ -139,7 +149,7 @@ const LANDMARK_TXT=[null,
 
 /* ====================== 状態 ====================== */
 let S=null, mode='title';
-const GAME_URL='';   // 公開URLをここに入れると、Xシェアの投稿にURLが付く
+const GAME_URL='https://nimnim1848.github.io/lost_cat/';   // 公開URLをここに入れると、Xシェアの投稿にURLが付く
 let CHAL=null;
 const CHS=[
  {id:'rain',ic:'🌧️',name:'雨の夜',desc:'雨音で耳が利かない。音が小さく、聞こえる距離も短い。',seed:101101,lvl:2,mod:{hear:.55}},
