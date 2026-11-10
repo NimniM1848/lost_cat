@@ -1081,7 +1081,7 @@ const ACH=[
  {id:'sneak',ic:'🥷',name:'忍び足（一度も走らない）',bonus:400,test:S=>S.sprintT<1},
  {id:'bush',ic:'🌿',name:'かくれんぼ名人（茂みで15秒休む）',bonus:200,test:S=>S.hideTot>=15},
  {id:'close',ic:'😱',name:'すれすれの猫（車のすぐ横を3回）',bonus:300,test:S=>S.close>=3},
- {id:'fast',ic:'⚡',name:'韋駄天（2分半以内に帰宅）',bonus:400,test:S=>S.time<150},
+ {id:'fast',ic:'⚡',name:'韋駄天（1分以内に帰宅）',bonus:400,test:S=>S.time<60},
  {id:'mole',ic:'🕳️',name:'モグラ猫（抜け道を2回くぐる）',bonus:200,test:S=>S.tunnels>=2},
  {id:'edge',ic:'🪽',name:'九死に一生の猫（体力10以下で帰宅）',bonus:300,test:S=>S.hp<=10},
  {id:'food',ic:'🐟',name:'くいしんぼ（ごはんの匂いを嗅ぐ）',bonus:150,test:S=>S.foodSniff}
@@ -1685,6 +1685,13 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&mode==='pl
 document.getElementById('muteBtn').textContent=SFX.muted?'🔇':'🔊';
 document.getElementById('muteBtn').addEventListener('click',e=>{SFX.init();SFX.setMute(!SFX.muted);if(!SFX.muted)SFX.ui('click');e.currentTarget.blur();});
 addEventListener('pointerdown',()=>SFX.init(),{capture:true});
+// スマホで2本指（右手で移動＋左手でボタン）がピンチ拡大に誤認されるのを防ぐ
+['gesturestart','gesturechange','gestureend'].forEach(n=>document.addEventListener(n,e=>e.preventDefault(),{passive:false}));
+document.addEventListener('touchmove',e=>{if(e.touches.length>1||e.scale&&e.scale!==1)e.preventDefault();},{passive:false});
+let lastTE=0;
+document.addEventListener('touchend',e=>{const n=Date.now();if(n-lastTE<350)e.preventDefault();lastTE=n;},{passive:false});
+document.addEventListener('dblclick',e=>e.preventDefault());
+document.addEventListener('contextmenu',e=>e.preventDefault());
 addEventListener('keydown',e=>{SFX.init();if(e.code==='KeyM')SFX.setMute(!SFX.muted);},{capture:true});
 document.getElementById('pauseBtn').addEventListener('click',()=>{if(mode==='play')showPause();else if(mode==='pause')resume();});
 document.getElementById('ctrl').textContent=ctrlText();
